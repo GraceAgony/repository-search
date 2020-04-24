@@ -1,0 +1,34 @@
+@import "./../../colors.scss";
+
+.c-search {
+  display: flex;
+  background-color: $bg-gray;
+  height: 35px;
+  border: $bg-blue 2px solid;
+  border-radius: 5px;
+  margin: 20px 0;
+
+  &__input {
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    width: 300px;
+    max-width: calc(100vw - 60px);
+  }
+
+  &__button {
+    height: 100%;
+    background-color: $bg-blue;
+    border: $bg-blue 2px solid;
+
+    &:hover {
+      background-color: $bg-blue-dark;
+      border: $bg-blue-dark 2px solid;
+    }
+  }
+
+  &__icon {
+    color: $bg-white;
+  }
+}
