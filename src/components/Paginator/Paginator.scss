@@ -1,0 +1,17 @@
+.repo-items-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 245px;
+}
+
+.c-paginator {
+  &__loading {
+    margin-top: 230px;
+  }
+
+  &__empty-result {
+    margin-top: 230px;
+  }
+}

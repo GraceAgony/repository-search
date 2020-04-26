@@ -1,0 +1,48 @@
+@import "./../../colors.scss";
+
+.c-repo-item {
+  border: $bg-blue 2px solid;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 1em;
+  width: 40%;
+  background-color: $bg-blue-light;
+  min-width: 250px;
+  overflow-x: auto;
+
+  &__name {
+    font-weight: bold;
+    text-decoration: none;
+    color: $bg-blue;
+
+    &:hover {
+      text-decoration: underline;
+      color: $bg-blue-dark;
+    }
+  }
+
+  &__description {
+    margin: 0.5em 0;
+    color: $text-gray;
+  }
+
+  &__stars {
+    display: flex;
+    align-items: baseline;
+    color: $text-gray;
+  }
+
+  &__language {
+    color: $text-gray;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  svg {
+    margin-right: 0.5em;
+  }
+}

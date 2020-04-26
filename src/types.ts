@@ -2,6 +2,7 @@ export interface ReposState {
   items: ReposBySearch;
   loading: boolean;
   error: Error | null;
+  currentSearchString: string;
 }
 
 export type RootState = { repositories: ReposState };
@@ -27,5 +28,5 @@ export interface Repo {
 }
 
 export interface ReposBySearch {
-  [searchString: string]: Repo[];
+  [searchString: string]: { totalCount: number; [pageNumber: number]: Repo[] };
 }

@@ -5,6 +5,7 @@ const initialState: ReposState = {
   items: {},
   loading: false,
   error: null,
+  currentSearchString: "",
 };
 
 export default function reposReducer(
@@ -22,9 +23,14 @@ export default function reposReducer(
       return {
         ...state,
         loading: false,
+        currentSearchString: action.payload.searchString,
         items: {
           ...state.items,
-          [action.payload.searchString]: action.payload.repos,
+          [action.payload.searchString]: {
+            ...state.items[action.payload.searchString],
+            totalCount: action.payload.totalCount,
+            [action.payload.pageNumber]: action.payload.repos,
+          },
         },
       };
 

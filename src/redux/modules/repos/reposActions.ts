@@ -6,12 +6,12 @@ export enum ReposActionTypes {
   FETCH_REPOS_FAILURE = "FETCH_REPOS_FAILURE",
 }
 
-export const fetchRepos = (searchInput: string) => (
+export const fetchRepos = (searchInput: string, pageNumber: number) => (
   dispatch: any,
   getState: () => RootState
 ) => {
   const reposStore = getState().repositories.items;
-  if (reposStore[searchInput]) {
+  if (reposStore[searchInput]?.[pageNumber]) {
     return;
   }
   dispatch(fetchReposStart);
@@ -19,6 +19,8 @@ export const fetchRepos = (searchInput: string) => (
   url.searchParams.append("q", searchInput);
   url.searchParams.append("sort", "stars");
   url.searchParams.append("order", "desc");
+  url.searchParams.append("page", `${pageNumber}`);
+  url.searchParams.append("per_page", "30");
 
   fetch(url.href)
     .then((res) => res.json())
@@ -26,7 +28,9 @@ export const fetchRepos = (searchInput: string) => (
       if (res.error) {
         throw res.error;
       }
-      dispatch(fetchReposSuccess(searchInput, res.items));
+      dispatch(
+        fetchReposSuccess(searchInput, pageNumber, res.items, res.total_count)
+      );
     })
     .catch((error) => {
       dispatch(fetchReposFailure(error));
@@ -39,10 +43,12 @@ export const fetchReposStart: Action<ReposActionTypes> = {
 
 export const fetchReposSuccess = (
   searchString: string,
-  repos: Repo[]
+  pageNumber: number,
+  repos: Repo[],
+  totalCount: number
 ): Action<ReposActionTypes> => ({
   type: ReposActionTypes.FETCH_REPOS_SUCCESS,
-  payload: { searchString, repos },
+  payload: { searchString, pageNumber, repos, totalCount },
 });
 
 export const fetchReposFailure = (
