@@ -1,6 +1,9 @@
 @import "./../../colors.scss";
 
 .c-repo-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: $bg-blue 2px solid;
   border-radius: 5px;
   padding: 1em;

@@ -4,6 +4,7 @@ export enum ReposActionTypes {
   FETCH_REPOS_START = "FETCH_REPOS_START",
   FETCH_REPOS_SUCCESS = "FETCH_REPOS_SUCCESS",
   FETCH_REPOS_FAILURE = "FETCH_REPOS_FAILURE",
+  SET_SEARCH_INPUT_VALUE = "SET_SEARCH_INPUT_VALUE",
 }
 
 export const fetchRepos = (searchInput: string, pageNumber: number) => (
@@ -12,6 +13,7 @@ export const fetchRepos = (searchInput: string, pageNumber: number) => (
 ) => {
   const reposStore = getState().repositories.items;
   if (reposStore[searchInput]?.[pageNumber]) {
+    dispatch(setCurrentSearchValue(searchInput));
     return;
   }
   dispatch(fetchReposStart);
@@ -53,7 +55,16 @@ export const fetchReposSuccess = (
 
 export const fetchReposFailure = (
   error: Error
-): Action<ReposActionTypes, Error> => ({
-  type: ReposActionTypes.FETCH_REPOS_FAILURE,
-  payload: error,
+): Action<ReposActionTypes, Error> => {
+  return {
+    type: ReposActionTypes.FETCH_REPOS_FAILURE,
+    payload: error,
+  };
+};
+
+export const setCurrentSearchValue = (
+  searchString: string
+): Action<ReposActionTypes> => ({
+  type: ReposActionTypes.SET_SEARCH_INPUT_VALUE,
+  payload: { searchString },
 });

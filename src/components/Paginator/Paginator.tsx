@@ -34,14 +34,15 @@ const Paginator: React.FunctionComponent<PaginatorProps> = () => {
   const isPreviousButtonEnabled = currentPage > 1;
   const isNextButtonEnabled = currentPage < numberOfPages;
 
-  const startPage =
-    numberOfPages > 4
-      ? numberOfPages - currentPage > 2
-        ? currentPage - 3 < 0
-          ? 1
-          : currentPage - 2
-        : numberOfPages - 4
-      : 1;
+  let startPage = 1;
+  if (numberOfPages > 4) {
+    if (numberOfPages - currentPage > 2) {
+      if (currentPage - 3 > 0) {
+        startPage = currentPage - 2;
+      }
+    }
+    startPage = numberOfPages - 4;
+  }
 
   const goToPage = (pageNumber: number) => () => {
     setCurrentPage(pageNumber);
@@ -50,7 +51,8 @@ const Paginator: React.FunctionComponent<PaginatorProps> = () => {
 
   const Buttons = () => {
     let buttons = [];
-    for (let i: number = 0; i < 5; i++) {
+    const endPage = numberOfPages > 4 ? 5 : numberOfPages;
+    for (let i: number = 0; i < endPage; i++) {
       const currentPageNumber = startPage + i;
       buttons.push(
         <button
@@ -69,7 +71,7 @@ const Paginator: React.FunctionComponent<PaginatorProps> = () => {
       <div className="c-paginator__pagination-buttons">
         {isPreviousButtonEnabled && (
           <button
-            className="c-paginator__pagination-button"
+            className="c-paginator__pagination-arrow-button"
             onClick={goToPage(currentPage - 1)}
           >
             {"<<"}
@@ -78,7 +80,7 @@ const Paginator: React.FunctionComponent<PaginatorProps> = () => {
         {buttons}
         {isNextButtonEnabled && (
           <button
-            className="c-paginator__pagination-button"
+            className="c-paginator__pagination-arrow-button"
             onClick={goToPage(currentPage + 1)}
           >
             >>

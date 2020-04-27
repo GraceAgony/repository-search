@@ -1,3 +1,5 @@
+@import "./../../colors.scss";
+
 .repo-items-list {
   display: flex;
   flex-direction: row;
@@ -6,12 +8,44 @@
   margin-top: 245px;
 }
 
+@mixin paginator-button {
+  background-color: $bg-white;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+
 .c-paginator {
+  width: 100%;
+
   &__loading {
     margin-top: 230px;
   }
 
   &__empty-result {
     margin-top: 230px;
+    text-align: center;
+  }
+
+  &__pagination-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__pagination-button {
+    @include paginator-button;
+
+    border: 1px solid $bg-black;
+
+    &--active {
+      background-color: $bg-black;
+      color: $bg-white;
+    }
+  }
+
+  &__pagination-arrow-button {
+    @include paginator-button;
+
+    border: none;
   }
 }

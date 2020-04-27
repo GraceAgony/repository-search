@@ -7,7 +7,8 @@ export const selectMaxPagesNumber = (state: RootState) => {
   const totalCount =
     state.repositories.items[state.repositories.currentSearchString]
       ?.totalCount;
-  return totalCount >= 1000 ? 34 : Math.round(totalCount / 30);
+
+  return totalCount >= 1000 ? 34 : Math.ceil(totalCount / 30);
 };
 
 export const selectWereReposLoaded = (state: RootState) =>

@@ -42,6 +42,9 @@ export default function reposReducer(
         items: [],
       };
 
+    case ReposActionTypes.SET_SEARCH_INPUT_VALUE:
+      return { ...state, currentSearchString: action.payload.searchString };
+
     default:
       return state;
   }
