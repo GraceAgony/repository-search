@@ -34,15 +34,14 @@ const Paginator: React.FunctionComponent<PaginatorProps> = () => {
   const isPreviousButtonEnabled = currentPage > 1;
   const isNextButtonEnabled = currentPage < numberOfPages;
 
-  let startPage = 1;
-  if (numberOfPages > 4) {
-    if (numberOfPages - currentPage > 2) {
-      if (currentPage - 3 > 0) {
-        startPage = currentPage - 2;
-      }
-    }
-    startPage = numberOfPages - 4;
-  }
+  const startPage =
+    numberOfPages > 4
+      ? numberOfPages - currentPage > 2
+        ? currentPage - 3 < 0
+          ? 1
+          : currentPage - 2
+        : numberOfPages - 4
+      : 1;
 
   const goToPage = (pageNumber: number) => () => {
     setCurrentPage(pageNumber);
@@ -67,6 +66,7 @@ const Paginator: React.FunctionComponent<PaginatorProps> = () => {
         </button>
       );
     }
+
     return (
       <div className="c-paginator__pagination-buttons">
         {isPreviousButtonEnabled && (

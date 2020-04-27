@@ -15,7 +15,7 @@ import "./Main.scss";
 
 interface MainProps {}
 
-const Main: React.FunctionComponent<MainProps> = (props) => {
+const Main: React.FunctionComponent<MainProps> = () => {
   const isSearchString = useSelector(selectSearchString);
   const isLoading = !useSelector(selectWereReposLoaded);
   const error = useSelector(selectError);

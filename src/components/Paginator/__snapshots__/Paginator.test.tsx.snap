@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should write a snapshot 1`] = `
+<div>
+  <div
+    class="c-paginator"
+  >
+    <div
+      class="c-paginator__empty-result"
+    >
+      There are no results
+    </div>
+  </div>
+</div>
+`;

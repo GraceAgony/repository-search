@@ -15,14 +15,8 @@ export type Action<T = string, P = any> = {
 export interface Repo {
   id: number;
   name: string;
-  owner: {
-    login: string;
-    avatar_url: string;
-    html_url: string;
-  };
   html_url: string;
   description: string;
-  fork: false;
   stargazers_count: number;
   language: string;
 }

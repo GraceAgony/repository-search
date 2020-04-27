@@ -37,6 +37,7 @@ const Search: React.FunctionComponent<SearchProps> = () => {
   return (
     <div className="c-search">
       <input
+        aria-label="search-input"
         className="c-search__input"
         type="search"
         placeholder="Search"

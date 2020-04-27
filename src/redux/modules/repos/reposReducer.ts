@@ -1,7 +1,7 @@
 import { ReposActionTypes } from "./reposActions";
 import { Action, ReposState } from "../../../types";
 
-const initialState: ReposState = {
+export const initialState: ReposState = {
   items: {},
   loading: false,
   error: null,
@@ -39,7 +39,6 @@ export default function reposReducer(
         ...state,
         loading: false,
         error: action.payload,
-        items: [],
       };
 
     case ReposActionTypes.SET_SEARCH_INPUT_VALUE:

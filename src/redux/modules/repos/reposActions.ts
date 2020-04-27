@@ -24,7 +24,7 @@ export const fetchRepos = (searchInput: string, pageNumber: number) => (
   url.searchParams.append("page", `${pageNumber}`);
   url.searchParams.append("per_page", "30");
 
-  fetch(url.href)
+  return fetch(url.href)
     .then((res) => res.json())
     .then((res) => {
       if (res.error) {
