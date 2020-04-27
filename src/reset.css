@@ -206,21 +206,12 @@ html {
   -ms-text-size-adjust: 100%; /* 2 */
 }
 
-/**
- * Address `outline` inconsistency between Chrome and other browsers.
- */
-
-a:focus {
-  outline: thin dotted;
-}
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
-
 a:active,
-a:hover {
-  outline: 0;
+a:focus,
+a:visited {
+  outline: none;
+  border: none;
+  -moz-outline-style: none;
 }
 
 /**

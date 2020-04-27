@@ -74,7 +74,7 @@ const Paginator: React.FunctionComponent<PaginatorProps> = () => {
             className="c-paginator__pagination-arrow-button"
             onClick={goToPage(currentPage - 1)}
           >
-            {"<<"}
+            {"<"}
           </button>
         )}
         {buttons}
@@ -83,7 +83,7 @@ const Paginator: React.FunctionComponent<PaginatorProps> = () => {
             className="c-paginator__pagination-arrow-button"
             onClick={goToPage(currentPage + 1)}
           >
-            >>
+            {">"}
           </button>
         )}
       </div>
