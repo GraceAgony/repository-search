@@ -29,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +50,8 @@
   },
   "devDependencies": {
     "@types/redux-mock-store": "^1.0.2",
+    "gh-pages": "^2.2.0",
     "redux-mock-store": "^1.5.4"
-  }
+  },
+  "homepage": "http://GraceAgony.github.io/repository-search"
 }
